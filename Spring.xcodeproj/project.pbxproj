@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		C96072121BE8121E002E99D4 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C96072111BE8121E002E99D4 /* main.cpp */; };
+		C960721E1BE81BB1002E99D4 /* terrarium.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C960721D1BE81BB1002E99D4 /* terrarium.cpp */; };
+		C96072201BE95889002E99D4 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C960721F1BE95889002E99D4 /* GLUT.framework */; };
+		C96072221BE95890002E99D4 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C96072211BE95890002E99D4 /* OpenGL.framework */; };
+		C9A5B87D1BEAC7DD00996939 /* state.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9A5B87C1BEAC7DD00996939 /* state.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +29,16 @@
 /* Begin PBXFileReference section */
 		C960720E1BE8121E002E99D4 /* Spring */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Spring; sourceTree = BUILT_PRODUCTS_DIR; };
 		C96072111BE8121E002E99D4 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		C96072181BE81A04002E99D4 /* state.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = state.h; sourceTree = "<group>"; };
+		C960721A1BE81A2F002E99D4 /* generator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = generator.h; sourceTree = "<group>"; };
+		C960721B1BE81A54002E99D4 /* terrarium.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = terrarium.h; sourceTree = "<group>"; };
+		C960721C1BE81AAF002E99D4 /* v3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = v3.h; sourceTree = "<group>"; };
+		C960721D1BE81BB1002E99D4 /* terrarium.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = terrarium.cpp; sourceTree = "<group>"; };
+		C960721F1BE95889002E99D4 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
+		C96072211BE95890002E99D4 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		C96072231BE98F59002E99D4 /* mesh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mesh.h; sourceTree = "<group>"; };
+		C9A5B87B1BE9EDAF00996939 /* rungekutta.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = rungekutta.h; sourceTree = "<group>"; };
+		C9A5B87C1BEAC7DD00996939 /* state.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = state.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +46,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C96072221BE95890002E99D4 /* OpenGL.framework in Frameworks */,
+				C96072201BE95889002E99D4 /* GLUT.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -41,6 +57,8 @@
 		C96072051BE8121E002E99D4 = {
 			isa = PBXGroup;
 			children = (
+				C96072211BE95890002E99D4 /* OpenGL.framework */,
+				C960721F1BE95889002E99D4 /* GLUT.framework */,
 				C96072101BE8121E002E99D4 /* Spring */,
 				C960720F1BE8121E002E99D4 /* Products */,
 			);
@@ -57,9 +75,25 @@
 		C96072101BE8121E002E99D4 /* Spring */ = {
 			isa = PBXGroup;
 			children = (
+				C9A5B87E1BEAD22B00996939 /* headers */,
 				C96072111BE8121E002E99D4 /* main.cpp */,
+				C960721D1BE81BB1002E99D4 /* terrarium.cpp */,
+				C9A5B87C1BEAC7DD00996939 /* state.cpp */,
 			);
 			path = Spring;
+			sourceTree = "<group>";
+		};
+		C9A5B87E1BEAD22B00996939 /* headers */ = {
+			isa = PBXGroup;
+			children = (
+				C960721B1BE81A54002E99D4 /* terrarium.h */,
+				C96072181BE81A04002E99D4 /* state.h */,
+				C96072231BE98F59002E99D4 /* mesh.h */,
+				C960721A1BE81A2F002E99D4 /* generator.h */,
+				C9A5B87B1BE9EDAF00996939 /* rungekutta.h */,
+				C960721C1BE81AAF002E99D4 /* v3.h */,
+			);
+			name = headers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -119,6 +153,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C96072121BE8121E002E99D4 /* main.cpp in Sources */,
+				C9A5B87D1BEAC7DD00996939 /* state.cpp in Sources */,
+				C960721E1BE81BB1002E99D4 /* terrarium.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,6 +243,7 @@
 		C96072161BE8121E002E99D4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				OTHER_LDFLAGS = "-v";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -214,6 +251,7 @@
 		C96072171BE8121E002E99D4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				OTHER_LDFLAGS = "-v";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -237,6 +275,7 @@
 				C96072171BE8121E002E99D4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
