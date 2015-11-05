@@ -9,6 +9,8 @@
 #ifndef v3_h
 #define v3_h
 
+#include <iostream>
+#include <iomanip>
 #include <math.h>
 
 #define PI 3.141592653589793
@@ -104,6 +106,10 @@ public:
         double costype = cos(theta * PI/180);
         double sintype = sin(theta * PI/180);
         return v3<type>(x * costype - y * sintype, x * sintype + y * costype, z);
+    }
+    
+    std::string tostring() const {
+        return "(" + std::to_string(x) + "," + std::to_string(y) + "," + std::to_string(z) + ")";
     }
 };
 

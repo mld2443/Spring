@@ -20,11 +20,6 @@ namespace state {
         std::vector<mesh::vertex<double>> vertices;
         
     public:
-        struct strut {
-            double k, d, l;
-            unsigned long v1, v2;
-        };
-        
         vector() {}
         vector(const vector& s) {
             for (auto &p : s.vertices)
@@ -38,6 +33,7 @@ namespace state {
         void add_vertex(const mesh::vertex<double>& v) { vertices.push_back(v); }
         void clear_vertices() { vertices.clear(); }
         
+        void calc_intersects(vector& Snew);
         
         void draw_vertices() {
             for (auto &p : vertices)
@@ -46,7 +42,10 @@ namespace state {
         
         void draw_edges();
         
+        void draw_faces();
+        
         mesh::vertex<double>& operator[](unsigned long i) { return vertices[i]; }
+        const mesh::vertex<double>& operator[](unsigned long i) const { return vertices[i]; }
         
         vector operator+(const vector& s) const ;
         
@@ -57,8 +56,12 @@ namespace state {
         vector* operator=(const vector& s) ;
     };
     
-    extern std::vector<vector::strut> edges;
+    extern std::vector<mesh::strut<double>> edges;
+    extern std::vector<mesh::face<double>> faces;
     extern v3<double> gravity;
+    extern v3<double> wind;
+    extern double dragc;
+    extern double liftc;
     
     vector derive(const vector& S, const double t);
 }

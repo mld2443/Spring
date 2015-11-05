@@ -19,7 +19,7 @@ class terrarium {
 private:
     double radius;
     double ldepth, lwidth, rdepth, rwidth;
-    state::vector state;
+    state::vector S;
     
     v3<double> wind;
     double windc;
@@ -28,9 +28,11 @@ private:
     void draw_ground();
     
 public:
-    terrarium(const double r = 5000);
+    terrarium(const unsigned int sim = 0, const double r = 5000);
     
-    void draw();
+    void step(const double t);
+    
+    void draw(bool wireframe = false);
 };
 
 #endif /* terrarium_h */

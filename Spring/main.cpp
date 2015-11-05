@@ -29,6 +29,7 @@ v3<float> eyePos, lookDir;
 // scene data
 int window;
 terrarium t;
+bool wires;
 
 void display() {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -36,7 +37,7 @@ void display() {
     
     gluLookAt(eyePos.x, eyePos.y, eyePos.z, (eyePos+lookDir).x, (eyePos+lookDir).y, (eyePos+lookDir).z, 0, 1, 0);
     
-    t.draw();
+    t.draw(wires);
     
     glPopMatrix();
     glutSwapBuffers();
@@ -45,7 +46,7 @@ void display() {
 void init() {
     // Enable Z-buffering, backface culling, and lighting
     glEnable(GL_DEPTH_TEST);
-    glEnable(GL_CULL_FACE);
+    glDisable(GL_CULL_FACE);
     glShadeModel(GL_SMOOTH);
     glEnable(GL_LIGHTING);
     glEnable(GL_LIGHT0);
@@ -59,17 +60,18 @@ void init() {
     // simulation timing
     steps_per_frame = 1;
     fps = 60.0;
-    timestep = 1.0/(fps * steps_per_frame);
+    timestep = 2.5/(fps * (double)steps_per_frame);
     play = true;
     
     // looking and movement
     movespeed = 10.0;
     camPhi = 0;
-    camTheta = 0;
+    camTheta = 315;
     eyePos = v3<float>(0,10,0);
     lookDir = v3<float>(1,0,0).rotateZ(camPhi).rotateY(camTheta);
     
-    t = terrarium();
+    wires = false;
+    t = terrarium(4);
 }
 
 void resizeFunc(GLint newWidth, GLint newHeight) {
@@ -85,10 +87,10 @@ void newFrame(const int id) {
         unsigned int step = 0;
         
         while (step < steps_per_frame) {
-            //t.step(timestep);
+            t.step(timestep);
             step++;
         }
-        
+
         glutPostRedisplay();
     }
 }
@@ -107,6 +109,11 @@ void key(const unsigned char c, const int x, const int y) {
         case 27:
             glutDestroyWindow(window);
             exit(0);
+            break;
+            
+        case 9:
+            wires = !wires;
+            glutPostRedisplay();
             break;
             
         case 'w':
@@ -194,7 +201,7 @@ int main(int argc, char** argv) {
     glutFullScreen();
     glutKeyboardFunc(key);
     glutSpecialFunc(specialKey);
-    //glutTimerFunc(1000.0/fps, newFrame, 0);
+    glutTimerFunc(1000.0/fps, newFrame, 0);
     glutReshapeFunc(resizeFunc);
     
     init();

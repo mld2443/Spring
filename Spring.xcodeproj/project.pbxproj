@@ -12,6 +12,7 @@
 		C96072201BE95889002E99D4 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C960721F1BE95889002E99D4 /* GLUT.framework */; };
 		C96072221BE95890002E99D4 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C96072211BE95890002E99D4 /* OpenGL.framework */; };
 		C9A5B87D1BEAC7DD00996939 /* state.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9A5B87C1BEAC7DD00996939 /* state.cpp */; };
+		C9A5B8801BEAE45500996939 /* mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9A5B87F1BEAE45500996939 /* mesh.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -39,6 +40,7 @@
 		C96072231BE98F59002E99D4 /* mesh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mesh.h; sourceTree = "<group>"; };
 		C9A5B87B1BE9EDAF00996939 /* rungekutta.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = rungekutta.h; sourceTree = "<group>"; };
 		C9A5B87C1BEAC7DD00996939 /* state.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = state.cpp; sourceTree = "<group>"; };
+		C9A5B87F1BEAE45500996939 /* mesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mesh.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 				C9A5B87E1BEAD22B00996939 /* headers */,
 				C96072111BE8121E002E99D4 /* main.cpp */,
 				C960721D1BE81BB1002E99D4 /* terrarium.cpp */,
+				C9A5B87F1BEAE45500996939 /* mesh.cpp */,
 				C9A5B87C1BEAC7DD00996939 /* state.cpp */,
 			);
 			path = Spring;
@@ -154,6 +157,7 @@
 			files = (
 				C96072121BE8121E002E99D4 /* main.cpp in Sources */,
 				C9A5B87D1BEAC7DD00996939 /* state.cpp in Sources */,
+				C9A5B8801BEAE45500996939 /* mesh.cpp in Sources */,
 				C960721E1BE81BB1002E99D4 /* terrarium.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
