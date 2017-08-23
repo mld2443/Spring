@@ -71,7 +71,10 @@ void init() {
     lookDir = v3<float>(1,0,0).rotateZ(camPhi).rotateY(camTheta);
     
     wires = false;
-    t = terrarium(4);
+    //////////////////////////
+    // specify the scenario here.
+    //////////////////////////
+    t = terrarium(1);
 }
 
 void resizeFunc(GLint newWidth, GLint newHeight) {
@@ -97,8 +100,7 @@ void newFrame(const int id) {
 
 void key(const unsigned char c, const int x, const int y) {
     //space - play/pause
-    //c - toggle free camera
-    //1 - toggle which flock to follow, (make sure not to press this unless there's at least 2 flocks)
+    //tab - toggle wire frame
     //wasd - move camera in free camera
     //arrows - look aroud
     //esc - exit

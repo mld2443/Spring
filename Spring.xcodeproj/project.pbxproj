@@ -28,12 +28,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C9382F381C142068006F5DBF /* v3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = v3.h; sourceTree = "<group>"; };
 		C960720E1BE8121E002E99D4 /* Spring */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Spring; sourceTree = BUILT_PRODUCTS_DIR; };
 		C96072111BE8121E002E99D4 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		C96072181BE81A04002E99D4 /* state.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = state.h; sourceTree = "<group>"; };
 		C960721A1BE81A2F002E99D4 /* generator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = generator.h; sourceTree = "<group>"; };
 		C960721B1BE81A54002E99D4 /* terrarium.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = terrarium.h; sourceTree = "<group>"; };
-		C960721C1BE81AAF002E99D4 /* v3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = v3.h; sourceTree = "<group>"; };
 		C960721D1BE81BB1002E99D4 /* terrarium.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = terrarium.cpp; sourceTree = "<group>"; };
 		C960721F1BE95889002E99D4 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
 		C96072211BE95890002E99D4 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -94,7 +94,7 @@
 				C96072231BE98F59002E99D4 /* mesh.h */,
 				C960721A1BE81A2F002E99D4 /* generator.h */,
 				C9A5B87B1BE9EDAF00996939 /* rungekutta.h */,
-				C960721C1BE81AAF002E99D4 /* v3.h */,
+				C9382F381C142068006F5DBF /* v3.h */,
 			);
 			name = headers;
 			sourceTree = "<group>";

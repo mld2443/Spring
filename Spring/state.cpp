@@ -8,10 +8,9 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
-#include "state.h"
+#include <stdlib.h>
 
-#define RHO 0.9
-#define MU 0.1
+#include "state.h"
 
 std::vector<mesh::strut<double>> state::edges;
 std::vector<mesh::face<double>> state::faces;
@@ -39,7 +38,7 @@ state::vector state::derive(const vector& S, const double t) {
         v3<double> normal = (P0 - P1).cross(P2 - P1).normalize();
         
         v3<double> Vf = (V0 + V1 + V2) / 3;
-        v3<double> Vr = Vf - wind;
+        v3<double> Vr = Vf - (wind * ((double)rand()/RAND_MAX));
         double A = (P0 - P1).cross(P2 - P1).abs() / 2;
         
         v3<double> Fd, Fl;
@@ -84,21 +83,22 @@ state::vector state::derive(const vector& S, const double t) {
     return Sdot;
 }
 
+
 void state::vector::calc_intersects(vector& Snew) {
     for (unsigned int i = 0; i < size(); ++i) {
         for (auto &f : faces){
-            const v3<double> c1 = Snew[f.i0].pos, c2 = Snew[f.i1].pos, c3 = Snew[f.i2].pos;
-            const v3<double> normal = ((c1 - c2).cross(c3 - c2)).normalize();
+            const v3<double> P1 = Snew[f.i0].pos, P2 = Snew[f.i1].pos, P3 = Snew[f.i2].pos;
+            const v3<double> normal = ((P1 - P2).cross(P3 - P2)).normalize();
             if (f.i0 != i && f.i1 != i && f.i2 != i) {
-                if (f.cross_plane(c1, normal, vertices[i].pos, Snew[i].pos)){
-                    v3<double> intersect = f.find_intersect(c1, normal, vertices[i].pos, Snew[i].pos);
-                    if (f.projection_intersection(normal, c1, c2, c3, intersect)){
-                        v3<double> d = normal * f.dist_from_plane(c1, normal, Snew[i].pos);
-                        Snew[i].pos = Snew[i].pos - (d * (1 + RHO));
+                if (f.cross_plane(P1, normal, vertices[i].pos, Snew[i].pos)){
+                    v3<double> intersect = f.find_intersect(P1, normal, vertices[i].pos, Snew[i].pos);
+                    if (f.projection_intersection(normal, P1, P2, P3, intersect)){
+                        v3<double> d = normal * f.dist_from_plane(P1, normal, Snew[i].pos);
+                        Snew[i].pos = Snew[i].pos - (d * 2);
                         
                         v3<double> v_norm = normal * (Snew[i].vel.dot(normal));
                         v3<double> v_tan = Snew[i].vel - v_norm;
-                        Snew[i].vel = (v_norm * -RHO) + (v_tan * (1 - MU));
+                        Snew[i].vel = (v_norm * -1) + v_tan;
                     }
                 }
             }

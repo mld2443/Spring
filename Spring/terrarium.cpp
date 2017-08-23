@@ -13,14 +13,17 @@
 #include "rungekutta.h"
 
 terrarium::terrarium(const unsigned int sim, const double r): radius(r), ldepth(200), lwidth(50), rdepth(350), rwidth(90) {
+    /////////////////////////
+    // feel free to change any scenario parameters
+    /////////////////////////
     switch (sim) {
         case 1:
             gen::flag(S, {20, 20, 10}, {10, 20, 20}, 10, 10);
             
             state::gravity = v3<double>(0.0, -20, 0.0);
-            state::wind = v3<double>(0.0, 0.0, 0.0);
-            state::dragc = 0.0;
-            state::liftc = 0.0;
+            state::wind = v3<double>(1.0, 0.0, 0.0);
+            state::dragc = 0.005;
+            state::liftc = 0.003;
             break;
             
         case 2:
@@ -51,16 +54,6 @@ terrarium::terrarium(const unsigned int sim, const double r): radius(r), ldepth(
             break;
             
         case 5:
-            gen::flag(S, {20, 20, 10}, {10, 20, 20}, 10, 10, true);
-            gen::icosahedron(S, {15,10,15}, {0,0,0}, 5, 1, 1, true);
-            
-            state::gravity = v3<double>(0.0, -20, 0.0);
-            state::wind = v3<double>(0.0, 0.0, 0.0);
-            state::dragc = 0.01;
-            state::liftc = 0.005;
-            break;
-            
-        case 6:
             gen::flag(S, {20, 20, 10}, {10, 20, 20}, 10, 10);
             gen::icosahedron(S, {0.02,5,0.02}, {3,2,3}, 15.0/3.0, 0.1, 3.0/4.0);
             
@@ -70,7 +63,7 @@ terrarium::terrarium(const unsigned int sim, const double r): radius(r), ldepth(
             state::liftc = 0.0;
             break;
             
-        case 7:
+        case 6:
             gen::flag(S, {20, 20, 10}, {10, 20, 20}, 10, 10);
             gen::rddh(S, {0,5,0}, {3,2,3}, 15.0/3.0, 0.1, 3.0/4.0);
             
@@ -160,6 +153,9 @@ void terrarium::draw_ground() {
 }
 
 void terrarium::step(const double t) {
+    ////////////////////////////
+    // the following function is the integrator, change between "one", "two", and "four".
+    ////////////////////////////
     state::vector Snew = RK::four(S, t, state::derive);
     
     S.calc_intersects(Snew);
